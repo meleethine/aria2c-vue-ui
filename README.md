@@ -53,41 +53,41 @@ npm run serve
 
 ### 主页面
 
-<img src="https://github.com/meleethine/aria2/blob/main/screenshots/home.gif" width="720" height="480"/> 
+<img src="https://github.com/meleethine/aria2/blob/main/screenshots/home.gif" width="720" height="405"/> 
 
 ### 添加任务
 
-<img src="https://github.com/meleethine/aria2/blob/main/screenshots/add.gif" width="720" height="480"/> 
+<img src="https://github.com/meleethine/aria2/blob/main/screenshots/add.gif" width="720" height="405" object-fit:contain/> 
 
 ### 查询任务
 
-<img src="https://github.com/meleethine/aria2/blob/main/screenshots/query.gif" width="720" height="480"/> 
+<img src="https://github.com/meleethine/aria2/blob/main/screenshots/query.gif" width="720" height="405" object-fit:contain/> 
 
 ### 删除任务
 
-<img src="https://github.com/meleethine/aria2/blob/main/screenshots/remove.gif" width="720" height="480"/> 
+<img src="https://github.com/meleethine/aria2/blob/main/screenshots/remove.gif" width="720" height="405" object-fit:contain/> 
 
 ### 清空任务
 
-<img src="https://github.com/meleethine/aria2/blob/main/screenshots/clean.gif" width="720" height="480"/> 
+<img src="https://github.com/meleethine/aria2/blob/main/screenshots/clean.gif" width="720" height="405" object-fit:contain/> 
 
 ### 重下任务
 
-<img src="https://github.com/meleethine/aria2/blob/main/screenshots/reAdd.gif" width="720" height="480"/> 
+<img src="https://github.com/meleethine/aria2/blob/main/screenshots/reAdd.gif" width="720" height="405" object-fit:contain/> 
 
 ### 修改配置
 
-<img src="https://github.com/meleethine/aria2/blob/main/screenshots/setting.gif" width="720" height="480"/> 
+<img src="https://github.com/meleethine/aria2/blob/main/screenshots/setting.gif" width="720" height="405" object-fit:contain/> 
 
 ### 修改/删除服务器
 
-<img src="https://github.com/meleethine/aria2/blob/main/screenshots/removeServer.gif" width="720" height="480"/> 
+<img src="https://github.com/meleethine/aria2/blob/main/screenshots/removeServer.gif" width="720" height="405" object-fit:contain/> 
 
 ### 切换服务器
 
-<img src="https://github.com/meleethine/aria2/blob/main/screenshots/changeServer.gif" width="720" height="480"/> 
+<img src="https://github.com/meleethine/aria2/blob/main/screenshots/changeServer.gif" width="720" height="405" object-fit:contain/> 
 
-<img src="https://github.com/meleethine/aria2/blob/main/screenshots/changeServer2.gif" width="720" height="480"/> 
+<img src="https://github.com/meleethine/aria2/blob/main/screenshots/changeServer2.gif" width="720" height="405" object-fit:contain/> 
 
 
 
