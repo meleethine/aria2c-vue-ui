@@ -54,7 +54,6 @@
       </div>
     </el-backtop>
 
-
   </div>
 </template>
 <script>
@@ -148,7 +147,6 @@ export default {
     top: 7px;
     z-index: 5;
   }
-
   .back-top {
     height: 100%;
     width: 100%;

@@ -11,21 +11,38 @@
 
 # 技术栈
 
-vue2 + vue-router + webpack + ES6 + less
+vue2 + vue-router + webpack + ES6
 
 
 # 项目运行
 
 ```
-git clone https://github.com/meleethine/aria2.git  
+前端部分:
 
-cd aria2
+git clone https://github.com/meleethine/aria2c-vue-ui.git
+
+或者
+
+git clone git@github.com:meleethine/aria2c-vue-ui.git  
+
+cd aria2c-vue-ui
 
 npm install
 
 npm run serve
 
+后端部分:
+
+cd aria2c
+
+./aria2c.exe --conf-path=./aria2c.conf
+
 ```
+
+
+# API文档
+
+https://aria2.github.io/manual/en/html/index.html
 
 
 # 目标功能
@@ -46,10 +63,7 @@ npm run serve
 - [x] 缩放/还原界面 -- 完成
 
 
-
-
 # 项目截图
-
 
 ### 主页面
 

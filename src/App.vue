@@ -1,32 +1,21 @@
-
 <template>
   <div id="app">
     <div class="main">
       <div class="app-left">
-
-          <!-- <el-select class="slc" v-model="selectedServer" placeholder="默认" @change="switchServer">
-            <el-option class="opt" v-for="(server, idx) in servers" :key="idx" :label="server.name" :value="JSON.stringify(server)">
-          
-            </el-option>
-          </el-select> -->
-          <div class="switchBorad">
+        <div class="switchBorad">
           <div class="avatar">
             <i class="el-icon-user-solid"></i>
           </div>
           <div class="switchWrapper">
-            <select class="slc" v-model="selectedServer"  @change="switchServer">
-              <option class="opt" v-for="(server, idx) in servers" :key="idx" :label="server.name" :value="JSON.stringify(server)">
-                <!-- {{ `ws://${server.host}:${server.port}/jsonrpc` }} -->
+            <select class="slc" v-model="selectedServer" @change="switchServer">
+              <option class="opt" v-for="(server, idx) in servers" :key="idx" :label="server.name"
+                :value="JSON.stringify(server)">
               </option>
             </select>
+          </div>
+        </div>
 
-          </div>
-          </div>
-          
         <div>
-          <!-- <el-switch :width="Number(140)" :value="this.connectionStat == '已连接' ? true : false" disabled>
-          </el-switch> -->
-
           <el-row class="tac">
             <el-col :span="30">
               <el-menu default-active="2" :router="true">
@@ -51,7 +40,7 @@
                   <span slot="title">服务器管理 <el-tag effect="dark"
                       :type="this.connectionStat == '已连接' ? '' : (this.connectionStat == '连接中' ? 'warning' : 'danger')">
                       {{
-                          connectionStat
+                      connectionStat
                       }}</el-tag></span>
                 </el-menu-item>
               </el-menu>
@@ -60,35 +49,32 @@
             </el-col>
           </el-row>
         </div>
-
-
       </div>
 
       <div class="app-right">
         <div class="zoom">
-            <el-button class="el-icon-rank" size="mini" @click="zoom"></el-button>
+          <el-button class="el-icon-rank" size="mini" @click="zoom"></el-button>
         </div>
         <div class="global-stat">
           <span></span>
           <el-tag effect="dark" size="small" class="tag" type="primary"><i class="el-icon-download"></i>
-            下行 <span v-if="globalStat.downloadSpeed"> {{ ' '+getSpeed(globalStat.downloadSpeed)  }}</span>
+            下行 <span v-if="globalStat.downloadSpeed"> {{ ' '+getSpeed(globalStat.downloadSpeed) }}</span>
           </el-tag>
           <span></span>
           <el-tag effect="dark" size="small" class="tag" type="warning"><i class="el-icon-upload2"></i>
-            上行<span v-if="globalStat.uploadSpeed"> {{ ' '+getSpeed(globalStat.uploadSpeed)  }}</span>
+            上行<span v-if="globalStat.uploadSpeed"> {{ ' '+getSpeed(globalStat.uploadSpeed) }}</span>
           </el-tag>
         </div>
-       
-        <div class="new">
 
+        <div class="new">
           <el-button @change="startBT"><label class="addNew"><input type="file" accept=".torrent" hidden
                 @change="startBT">打开种子</label></el-button>
           <el-button @click="dialogFormVisible = true;">添加链接</el-button>
           <el-dialog title="添加下载链接" :visible.sync="dialogFormVisible">
-            <el-form >
+            <el-form>
               <el-form-item>
                 <el-input type="textarea" cols="25" rows="8" v-model="uris" placeholder="请用回车间隔多个下载任务"
-                spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"></el-input>
+                  spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"></el-input>
               </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -97,8 +83,8 @@
             </div>
           </el-dialog>
         </div>
+
         <router-view :aria2="aria2" @servers-changed="servers = $event" />
-       
       </div>
     </div>
   </div>
@@ -118,8 +104,6 @@ function getFileContent(file) {
 }
 
 export default {
-
-
   data() {
     var servers = JSON.parse(localStorage.getItem('aria2Servers'))
     var aria2 = new Aria2Client(servers[0])
@@ -136,7 +120,7 @@ export default {
   },
   methods: {
     zoom() {
-      if (document.body.style.transform == 'scale(1)'||document.body.style.transform =='') {
+      if (document.body.style.transform == 'scale(1)' || document.body.style.transform == '') {
         document.body.style.transform = 'scale(0.7)'
       } else {
         document.body.style.transform = 'scale(1)'
@@ -146,16 +130,16 @@ export default {
       return this.connectionStat == '已连接' ? true : false
     },
     async switchServer() {
-      console.log('this.selectedServer',this.selectedServer);
-      let{ host, port } = JSON.parse(this.selectedServer)
+      console.log('this.selectedServer', this.selectedServer);
+      let { host, port } = JSON.parse(this.selectedServer)
       console.log('host', host);
       console.log('port', port);
       console.log('`${host}:${port}`', `${host}:${port}`);
-      console.log('this.aria2.websocket.url',this.aria2.websocket.url);
+      console.log('this.aria2.websocket.url', this.aria2.websocket.url);
       if (this.aria2.websocket.url.includes(`${host}:${port}`)) {
         return
       }
-      
+
       this.aria2?.close()
       console.log('关闭旧服务器');
       this.globalStat = {}
@@ -168,13 +152,12 @@ export default {
           this.aria2 = aria2
           await this.aria2.ready()
           this.connectionStat = '已连接'
-          this.intervalId = setInterval(async() => {
-            this.globalStat=await this.aria2.getGlobalStat()
-          },1000)
-          // this.globalStat = await this.aria2.getGlobalStat()
+          this.intervalId = setInterval(async () => {
+            this.globalStat = await this.aria2.getGlobalStat()
+          }, 1000)
           console.log('已连接');
           this.$router.push('/')
-          
+
         } catch (e) {
           this.connectionStat = '连接失败'
           this.$alert('请修改后再次尝试', '参数错误', {
@@ -209,33 +192,19 @@ export default {
       this.$router.push('/')
     },
     start() {
-      // 不去前后空格可以识别,最后去一下
       var uris = this.uris.split('\n').map(it => it.trim()).filter(it => it)
       console.log('uris', uris)
       uris.forEach(async uri =>
-        // 注意参数接数组形式的字符串,Array.from会把uri转成分割的数组
         await this.aria2.addUri([uri])
       )
       uris = ''
-      console.log('uris',uris)
+      console.log('uris', uris)
       this.$router.push('/')
     },
   },
-  // created() {
-  //   console.log('CQthis.selectedServer',this.selectedServer);
-  //   console.log('CQthis.aria2',this.aria2);
-  //   this.switchServer()
-  //   console.log('CHthis.aria2', this.aria2);
-  //   console.log('CHthis.selectedServer',this.selectedServer);
-
-
-  // },
-
 
   async mounted() {
-    // if (!localStorage.getItem('aria2Servers')) {
-    //   localStorage.setItem('aria2Servers', JSON.stringify({'name':'默认','host':'localhost','port': '6800','secret': '999'}))
-    // }
+
     if (this.aria2) {
       console.log('this.aria2', this.aria2);
       this.globalStat = await this.aria2.getGlobalStat()
@@ -259,20 +228,23 @@ export default {
 }
 </script>
 <style lang="less">
-  html,body{
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background-color: #C7EDCC;
-    #app{
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #C7EDCC;
+
+  #app {
     margin: 0;
     padding: 0;
     height: 100%;
     background-color: #FFFFFF;
     border-radius: 5px;
     // background-color:#32373F;
-    }
   }
+}
+
 .main {
   font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -281,20 +253,23 @@ export default {
   color: #2c3e50;
   height: 100%;
 
-  font-size:xx-large;
+  font-size: xx-large;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 
   .app-left {
     flex: none;
     padding: 30px;
-    .switchBorad{
+
+    .switchBorad {
       padding-left: 20px;
       display: flex;
-      .avatar{
+
+      .avatar {
         margin-top: 6px;
       }
-      .switchWrapper{
-        .slc{
+
+      .switchWrapper {
+        .slc {
           margin-left: 5px;
           width: 80px;
           height: 25px;
@@ -303,18 +278,20 @@ export default {
 
       }
     }
-    
-    }
 
   }
 
-  .app-right {
-    flex: auto;
-    padding: 30px;
-    .zoom {
+}
+
+.app-right {
+  flex: auto;
+  padding: 30px;
+
+  .zoom {
     float: right;
-    .new{
-      border:rgb(255, 255, 255)
+
+    .new {
+      border: rgb(255, 255, 255)
     }
   }
 
@@ -340,10 +317,7 @@ export default {
     z-index: 50;
   }
 
-  }
-
-  
-
+}
 
 ::-webkit-scrollbar {
   //滚动条宽高，如果不需要显示滚动条可设置宽高为0

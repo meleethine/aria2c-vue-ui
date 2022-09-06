@@ -4,7 +4,6 @@
       <el-form-item>
         <el-button @click="changeOption" type="primary" class="save">保存设置</el-button>
 
-
         <div v-for="(val, key) in settings" :key="key">
           <el-descriptions direction="right" :column="1" border class="detail">
             <el-descriptions-item :label="optDescs[key] || key">
@@ -23,29 +22,8 @@
             </el-descriptions-item>
           </el-descriptions>
         </div>
-        <!-- <div v-for="(val, key) in settings" :key="key">
-            <el-form-item :label="optDescs[key] || key">
-              <div v-if="val === 'true' || val === 'false'">
-                <el-radio-group v-model="settings[key]">
-                  <el-radio label="true">是</el-radio>
-                  <el-radio label="false">否</el-radio>
-                </el-radio-group>
-              </div>
-              <div v-else-if="/^[0-9]+$/.test(val)">
-                <el-input-number v-model="settings[key]"></el-input-number>
-              </div>
-              <div v-else>
-                <el-input :value="val" style="width:300px" />
-              </div>
-            </el-form-item>
-          </div> -->
-
       </el-form-item>
-
     </el-form>
-
-
-
 
     <el-backtop target=".settings" :visibility-height="10" :bottom="75" :right="65">
       <div class="back-top">
@@ -54,10 +32,6 @@
     </el-backtop>
   </div>
 </template>
-
-
-
-
 
 <script>
 const optDescs = {

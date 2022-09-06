@@ -1,27 +1,6 @@
-
 <template>
   <div class="taskDetail">
-   <!--  <dl v-if="task">
-      <dt>任务名称</dt>
-      <dd>{{ getFilename(task) }}</dd>
-      <dt>任务大小</dt>
-      <dd>{{ getFilesize(task) }}</dd>
-      <dt>任务状态</dt>
-      <dd>{{ getFileStatus(task) }}</dd>
-      <dt>进度</dt>
-      <dd>{{ getPercent(task) }}</dd>
-      <dt>下载地址</dt>
-      <dd>{{ getUris(task) }}</dd>
-      <dt>文件列表</dt>
-      <dd v-for="file of task.files" :key="file.path">{{ file.path }}</dd>
-      <dt>区块信息</dt>
-      <dd>
-        <span v-for="i of Number(task.numPieces)" :key="i" class="piece" :class="{ completed: task.bitfield[i - 1] }">
-        </span>
-      </dd>
-    </dl> -->
-
-
+  
     <el-descriptions  direction="vertical" :column="2" border class="detail">
       <el-descriptions-item label="任务名称" >{{ getFilename(task) }}</el-descriptions-item>
       <el-descriptions-item label="任务大小">{{ getFilesize(task) }}</el-descriptions-item>
@@ -39,8 +18,6 @@
         </span>
       </el-descriptions-item>
     </el-descriptions>
-
-
 
   </div>
 </template>

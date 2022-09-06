@@ -162,12 +162,8 @@ export default {
       if (task.files?.[0].path) {
         return task.files[0].path.split('/').at(-1)
       } else {
-        // 注意即便是读[]属性也要?.
         return task.files?.[0]?.uri?.split('/').at(-1) ?? '未知'
       }
-      // return path.split('/').at(-1)
-      /* let parts=path.split('/')
-      return parts[parts.length-1] */
     },
     getPercent(task) {
       if (task.completedLength == 0) {
